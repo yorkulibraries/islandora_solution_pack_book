@@ -33,8 +33,15 @@ function template_preprocess_islandora_book_book(array &$variables) {
   $variables['parent_collections'] = islandora_get_parents_from_rels_ext($object);
   $variables['metadata'] = islandora_retrieve_metadata_markup($object);
   $variables['description'] = islandora_retrieve_description_markup($object);
+  $variables['islandora_object_label'] = $object->label;
   // @todo: Remove after 7.x-1.5 release.
   $variables['viewer'] = new IslandoraBookDeprecateString($variables, 'viewer', 'template_process_islandora_book_book');
+
+  // Original PDF -- Burma objects.
+  if (isset($object['ORIGINAL_PDF']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['ORIGINAL_PDF'])) {
+    $original_pdf_url = url("islandora/object/{$object->id}/datastream/ORIGINAL_PDF/{$object->label}", array('absolute' => TRUE));
+    $variables['islandora_book'] = l($variables['islandora_object_label'] . '.pdf', $original_pdf_url, array('html' => TRUE));
+  }
 }
 
 /**
