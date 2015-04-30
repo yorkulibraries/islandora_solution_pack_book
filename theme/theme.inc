@@ -39,7 +39,7 @@ function template_preprocess_islandora_book_book(array &$variables) {
 
   // Original PDF -- Burma objects.
   if (isset($object['ORIGINAL_PDF']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['ORIGINAL_PDF'])) {
-    $original_pdf_url = url("islandora/object/{$object->id}/datastream/ORIGINAL_PDF/{$object->label}", array('absolute' => TRUE));
+    $original_pdf_url = url("islandora/object/{$object->id}/datastream/ORIGINAL_PDF/{$object->label}" . '.pdf', array('absolute' => TRUE));
     $variables['islandora_book'] = l($variables['islandora_object_label'] . '.pdf', $original_pdf_url, array('html' => TRUE));
   }
 }
