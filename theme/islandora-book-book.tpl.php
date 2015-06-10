@@ -4,6 +4,11 @@
  * Template file to style output.
  */
 ?>
+<meta name="twitter:card" content="photo" />
+<meta name="twitter:site" content="@YUDLbot" />
+<meta name="twitter:title" content="<?php print ("{$islandora_object->label}"); ?>" />
+<meta property="og:url" content="https://digital.library.yorku.ca/<?php print ("islandora/object/{$islandora_object->id}"); ?>" />
+<meta name="twitter:image" content="https://digital.library.yorku.ca/<?php print ("islandora/object/{$islandora_object->id}/datastream/TN/view.jpg"); ?>" />
 <?php if(isset($viewer)): ?>
   <div id="book-viewer">
     <?php print $viewer; ?>
